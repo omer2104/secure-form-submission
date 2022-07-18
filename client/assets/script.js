@@ -22,7 +22,7 @@ function handleCredentialResponse(data) {
 
     const { credential } = data
     
-    const { header, payload } = jwtDecode(credentialsResponse.credential)
+    const { header, payload } = jwtDecode(credential)
 
     credentialsResponse = {
         name: payload.name,
