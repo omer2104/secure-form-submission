@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/basic.css') }}">
+    <title> leave a message </title>
+</head>
+
+<body>
+    <h1> leave a message</h1>
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/" method="POST">
+        <!-- div class="content">-->
+        <input type="text" placeholder="Enter email" name="email" required>
+        <br>
+        <textarea name="content" id="content"></textarea>
+        <!--<input type="text" placeholder="Enter email" name="content" required>-->
+        <br>
+        <p>{{content}}</p>
+        <br>
+        <input type="submit" value="Submit">
+        <br>
+        <a href="/dataBase.html">Link to database records</a>
+        <input type="button" onclick="location.href='/dataBase.html'" value="data base">
+
+    </form>
+
+</body>
+
+</html>
