@@ -10,13 +10,23 @@
         <caption>info</caption>
         <caption> <input type="button" onclick="location.href='/'" value="request list"></caption>
         <tr>
-            <th scope="col">Email</th>
-            <th scope="col">Content</th>
+            <th scope="col">review id</th>
+            <th scope="col">name</th>
+            <th scope="col">email</th>
+            <th scope="col">productName</th>
+            <th scope="col">days</th>
+            <th scope="col">satisfaction</th>
+            <th scope="col">verdict</th>
         </tr>
         {% for item in items %}
         <tr>
             <td>{{item[0]}}</td>
             <td>{{item[1]}}</td>
+            <td>{{item[2]}}</td>
+            <td>{{item[3]}}</td>
+            <td>{{item[4]}}</td>
+            <td>{{item[5]}}</td>
+            <td>{{item[6]}}</td>
             </td>
             {% endfor %}
     </table>
