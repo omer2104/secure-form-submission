@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, jsonify
 from sqlalchemy import true
 import sqlite3
+from verifyEmail import verifyEmail
 from verifyCaptcha import verifyCaptcha
 
 
@@ -39,6 +40,14 @@ def submitPost():
     
     productName, days, satisfaction, verdict = review_data.values()
     name, email, credential = user_data.values()
+    
+    
+    isEmailVerified = verifyEmail(credential)
+
+    if not isEmailVerified:
+        return jsonify({
+            "status": "Invalid Sign In with Gmail"
+        })
 
     sql = """INSERT INTO reviews (name, email, productName, days, satisfaction, verdict)
                         VALUES (?, ?, ?, ?, ?, ?)"""
