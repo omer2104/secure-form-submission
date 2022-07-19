@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, jsonify
 from sqlalchemy import true
 import sqlite3
+from verifyCaptcha import verifyCaptcha
 
 
 app = Flask(__name__)
@@ -28,6 +29,13 @@ def submitPost():
     review_data = data['review']
     user_data = data['user']
     recaptchaToken = data['recaptchaToken']
+
+    isNoRobot = verifyCaptcha(recaptchaToken)
+
+    if not isNoRobot: # If the user did not pass the recaptcha test
+        return jsonify({
+            "status": "Recaptcha Test Failed"
+        })
     
     productName, days, satisfaction, verdict = review_data.values()
     name, email, credential = user_data.values()
