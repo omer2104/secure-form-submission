@@ -103,6 +103,7 @@ function submitForm() {
         return response.json()
     }).then(data => {
         console.log(data)
+        alert(data.status)
     }).catch(err => {
         console.log(err)
     })

@@ -55,7 +55,7 @@ def submitPost():
     conn.commit()
 
     return jsonify({
-        "status": "OK"
+        "status": "Saved Review!"
     })
 
 
