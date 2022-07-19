@@ -16,7 +16,11 @@ def db_connection():
     return conn
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/', methods=['GET'])
+def homepage():
+    return render_template("index.html")
+
+@app.route('/', methods=['POST'])
 def home():
     conn = db_connection()
     cursor = conn.cursor()
@@ -47,4 +51,4 @@ def dataBase():
 
 
 if __name__ == "__main__":
-    app.run(debug=true)
+    app.run(debug=true, port=5500)
