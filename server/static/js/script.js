@@ -89,5 +89,21 @@ function submitForm() {
         return
     }
 
-    console.log(getFormData())
+    fetch("/submit", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            review: getFormData(),
+            user: credentialsResponse,
+            recaptchaToken,
+        })
+    }).then(response => {
+        return response.json()
+    }).then(data => {
+        console.log(data)
+    }).catch(err => {
+        console.log(err)
+    })
 }
