@@ -6,7 +6,6 @@ from verifyCaptcha import verifyCaptcha
 
 
 app = Flask(__name__)
-app.secret_key = "22923"
 
 
 def db_connection():
@@ -73,22 +72,3 @@ def dataBase():
 
 if __name__ == "__main__":
     app.run(debug=true, port=5500)
-
-
-
-# @app.route('/', methods=['POST'])
-# def home():
-#     conn = db_connection()
-#     cursor = conn.cursor()
-
-#     if request.method == 'POST':
-#         emailToAdd = request.form['email']
-#         contentToAdd = request.form['content']
-#         sql = """INSERT INTO info (email, content)
-#                         VALUES (?, ?)"""
-#         cursor = cursor.execute(sql, (emailToAdd, contentToAdd))
-#         conn.commit()
-#         flash("your message has been sent successfully", "info")
-#         return render_template("requests.html", content="sffg")
-#     else:
-#         return render_template("requests.html", content="sffg")
